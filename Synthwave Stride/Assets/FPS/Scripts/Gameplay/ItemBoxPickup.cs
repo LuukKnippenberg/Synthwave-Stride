@@ -9,7 +9,7 @@ public class ItemBoxPickup : Pickup
     [Tooltip("The prefab for the weapon that will be added to the player on pickup")]
     [SerializeField] private List<WeaponController> weaponItem;
 
-    [SerializeField] private WeaponController activeWeapon;
+    private WeaponController activeWeapon;
     // Start is called before the first frame update
     protected override void Start()
     {
