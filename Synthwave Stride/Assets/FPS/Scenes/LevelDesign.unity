@@ -1638,8 +1638,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock_1_Triangulated
       objectReference: {fileID: 0}
+    - target: {fileID: 898786952388101171, guid: 36999fac408898c489c8397b7ef089b8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36999fac408898c489c8397b7ef089b8, type: 3}
+--- !u!1 &1429290346535707397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 898786952388101171, guid: 36999fac408898c489c8397b7ef089b8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1429290346535707396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1429290346535707398
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429290346535707397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 6997b1b4b87bb684688b2fa06627e75b, type: 3}
 --- !u!1001 &2729281212881330968
 PrefabInstance:
   m_ObjectHideFlags: 0
