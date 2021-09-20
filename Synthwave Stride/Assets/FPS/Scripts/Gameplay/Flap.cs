@@ -30,7 +30,7 @@ namespace Unity.FPS.Gameplay
         // stored ratio for flap duration (1 is full, 0 is empty)
         public float DurationRatio { get; private set; }
 
-        public bool IsPlayergrounded() => m_PlayerCharacterController.IsGrounded;
+        public bool IsPlayerGrounded() => m_PlayerCharacterController.IsGrounded;
 
         void Start()
         {
@@ -51,7 +51,7 @@ namespace Unity.FPS.Gameplay
         void Update()
         {
             // flap can only be used if not grounded and jump has been pressed again once in-air
-            if (IsPlayergrounded())
+            if (IsPlayerGrounded())
             {
                 m_CanFlap = false;
             }
