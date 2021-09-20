@@ -28,7 +28,7 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Sound played when using the dash")]
         public AudioClip DashSfx;
 
-        bool m_IsDashing;
+        public bool m_IsDashing { get; private set; }
         PlayerCharacterController m_PlayerCharacterController;
         PlayerInputHandler m_InputHandler;
         float m_LastTimeOfUse;
@@ -68,8 +68,12 @@ namespace Unity.FPS.Gameplay
                 // store the last time of use for refill delay
                 m_LastTimeOfUse = Time.time;
 
+                if (m_PlayerCharacterController.IsGrounded)
+                {
+
+                    m_PlayerCharacterController.CharacterVelocity = transform.forward * DashAcceleration;
+                }
                 // apply the acceleration to character's velocity
-                m_PlayerCharacterController.CharacterVelocity = transform.forward * DashAcceleration;
 
                 // consume fuel
                 CurrentFillRatio = CurrentFillRatio - (Time.deltaTime / Duration);
