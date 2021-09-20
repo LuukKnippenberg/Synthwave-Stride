@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 555188489432107117}
   - component: {fileID: 8090847488450120274}
   m_Layer: 0
-  m_Name: Weapon_Blaster
+  m_Name: Weapon_WaterGun
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad90ba0b1477764da373f5ec01a8cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponName: Blaster
+  WeaponName: Watergun
   WeaponIcon: {fileID: 21300000, guid: 3c187e19c32c13542ba8a0c1a3a88ece, type: 3}
   CrosshairDataDefault:
     CrosshairSprite: {fileID: 21300000, guid: e881aa18189b12f4e915fc5b14ddc421, type: 3}
@@ -192,7 +192,7 @@ MonoBehaviour:
   DelayBetweenShots: 0.1
   BulletSpreadAngle: 0
   BulletsPerShot: 1
-  RecoilForce: 1
+  RecoilForce: 0.4
   AimZoomRatio: 0.5
   AimOffset: {x: 0, y: 0.075, z: 0}
   AutomaticReload: 0
