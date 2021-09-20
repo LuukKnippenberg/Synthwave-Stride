@@ -29,25 +29,25 @@ public class ItemBoxPickup : Pickup
         PlayerWeaponsManager playerWeaponsManager = byPlayer.GetComponent<PlayerWeaponsManager>();
         if (playerWeaponsManager)
         {
+            WeaponController oldWeaponController = playerWeaponsManager.GetActiveWeapon();
             int weaponValue = RandomWeaponValue();
             WeaponController obtainedWeapon = weaponItem[weaponValue];
 
             if (playerWeaponsManager.AddWeapon(obtainedWeapon))
             {
-                activeWeapon = playerWeaponsManager.GetActiveWeapon();
+                
                 // Will automatically switch to the new weapon and get rid of the older one.
-                if (activeWeapon != null)
+                if (playerWeaponsManager.GetActiveWeapon() != null)
                 {
-                    if (playerWeaponsManager.RemoveWeapon(activeWeapon))
-                    {
-
-                    }
-
+                    
                 }
                 playerWeaponsManager.SwitchWeapon(true);
-
                 PlayPickupFeedback();
                 Destroy(gameObject);
+            }
+            if (oldWeaponController)
+            {
+                playerWeaponsManager.RemoveWeapon(oldWeaponController);
             }
         }
     }
