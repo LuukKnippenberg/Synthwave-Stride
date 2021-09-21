@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1195099757982070265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195099757982070266}
+  m_Layer: 0
+  m_Name: ChargeDamagePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1195099757982070266
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195099757982070265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.531, z: 3.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6807447535783579133}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6807447534159009672
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,6 +178,7 @@ GameObject:
   - component: {fileID: 6807447534410483233}
   - component: {fileID: 6807447534410483232}
   - component: {fileID: 6807447534410483239}
+  - component: {fileID: 1195099757101685282}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -186,10 +217,10 @@ SphereCollider:
   m_GameObject: {fileID: 6807447534410483237}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 0.48
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.8328487
+  m_Center: {x: 0, y: -0.35284865, z: 1.4615681e-15}
 --- !u!114 &6807447534410483239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +235,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageMultiplier: 1
   SensibilityToSelfdamage: 0.5
+--- !u!136 &1195099757101685282
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807447534410483237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8829709
+  m_Height: 7.415198
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.518554, z: 0.38297105}
 --- !u!1 &6807447534447277873
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,7 +294,7 @@ Projector:
   m_FieldOfView: 105.92
   m_AspectRatio: 1
   m_Orthographic: 1
-  m_OrthographicSize: 0.54
+  m_OrthographicSize: 1.61
   m_Material: {fileID: 2100000, guid: 700c8e4508ea3b34999c1917db3d4424, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
@@ -345,6 +390,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6807447535124651938}
   - component: {fileID: 6807447535124651937}
+  - component: {fileID: 1195099756353831843}
   m_Layer: 0
   m_Name: BasicFish
   m_TagString: Untagged
@@ -386,6 +432,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &1195099756353831843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807447535124651936}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8549987, z: 2.5601711}
+  m_Center: {x: 0, y: 0.5490347, z: -0.17387812}
 --- !u!1 &6807447535600073907
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +524,7 @@ GameObject:
   - component: {fileID: 6807447535783579127}
   - component: {fileID: 6807447535783579126}
   - component: {fileID: 6807447535783579125}
+  - component: {fileID: 1195099757885510142}
   m_Layer: 0
   m_Name: Enemy_Shark
   m_TagString: Untagged
@@ -489,6 +549,7 @@ Transform:
   - {fileID: 6807447535600073916}
   - {fileID: 6807447534447277874}
   - {fileID: 6807447535982561468}
+  - {fileID: 1195099757982070266}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -582,6 +643,7 @@ MonoBehaviour:
   PitchDistortionMovementSpeed:
     Min: 1
     Max: 1.5
+  isAngry: 1
 --- !u!114 &6807447535783579122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,7 +683,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6807447535783579124}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -760,6 +822,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1195099757885510142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807447535783579124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b13eee6a8b8a0e40bdcfb97d5eadcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeDamagePosition: {fileID: 1195099757982070266}
+  chargeSpeed: 0.7
+  chargeDistance: 30
+  damage: 9999
+  damageDistance: 2
+  player: {fileID: 0}
+  charging: 0
+  resetTime: 3
 --- !u!1 &6807447535789147697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 6807447535608551911}
   DetectionRange: 20
-  AttackRange: 2
+  AttackRange: 12
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
 --- !u!1 &6807447536169055605
