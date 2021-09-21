@@ -2007,6 +2007,8 @@ GameObject:
   - component: {fileID: 4863125819350701415}
   - component: {fileID: 4863125819350701412}
   - component: {fileID: 4863125819350701413}
+  - component: {fileID: 2620646041232820885}
+  - component: {fileID: 756964683457422182}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2103,6 +2105,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2620646041232820885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863125819350701411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63366fe1767301746b90c0dee905e8ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashFillImage: {fileID: 2581854960491533635}
+  MainCanvasGroup: {fileID: 6530251067758950000}
+  FillBarColorChange: {fileID: 6390712969069774099}
+--- !u!114 &756964683457422182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863125819350701411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2060bbe54a5475346a5736daef94122a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FloatFillImage: {fileID: 2535471956656050958}
+  MainCanvasGroup: {fileID: 4471331415306931824}
+  FillBarColorChange: {fileID: 8844275866371511676}
 --- !u!1 &4863125819987826149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2411,6 +2443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthFillImage: {fileID: 3811699754773948883}
+  MainCanvasGroup: {fileID: 0}
 --- !u!114 &817587990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,6 +2494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StanceImage: {fileID: 5457988732091929373}
+  MainCanvasGroup: {fileID: 0}
   StandingSprite: {fileID: 21300000, guid: 52709b32aa114154aa3f42f22d4d225c, type: 3}
   CrouchingSprite: {fileID: 21300000, guid: d9b0340e45d66d64199b8219686bb5c5, type: 3}
 --- !u!114 &804804969663160542
@@ -2510,6 +2544,10 @@ MonoBehaviour:
   CrosshairImage: {fileID: 1672828021}
   NullCrosshairSprite: {fileID: 0}
   CrosshairUpdateshrpness: 5
+  m_DefaultCrosshair:
+    CrosshairSprite: {fileID: 0}
+    CrosshairSize: 0
+    CrosshairColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1610334969856411743
 MonoBehaviour:
   m_ObjectHideFlags: 0
