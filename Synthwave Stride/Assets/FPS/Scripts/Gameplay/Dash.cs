@@ -15,11 +15,11 @@ namespace Unity.FPS.Gameplay
 
         [Header("Parameters")]
         [Tooltip("The strength with which the jetpack pushes the player up")]
-        public float DashAcceleration = 7f;
+        public float DashVelocity = 30f;
 
         [Header("Durations")]
         [Tooltip("Time it takes to dash")]
-        public float Duration = 0.5f;
+        public float Duration = 0.2f;
 
         [Tooltip("Delay after last use before being able to dash again")]
         public float RechargeDelay = 5f;
@@ -28,6 +28,7 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Sound played when using the dash")]
         public AudioClip DashSfx;
 
+        public bool m_CanDash { get; private set; }
         public bool m_IsDashing { get; private set; }
         PlayerCharacterController m_PlayerCharacterController;
         PlayerInputHandler m_InputHandler;
@@ -35,7 +36,9 @@ namespace Unity.FPS.Gameplay
         bool m_JustUsed;
 
         // stored ratio for dash resource (1 is full, 0 is empty)
-        public float CurrentFillRatio { get; private set; }
+        public float CurrentRechargeRatio { get; private set; }
+
+        public bool IsPlayerGrounded() => m_PlayerCharacterController.IsGrounded;
 
         void Start()
         {
@@ -46,7 +49,7 @@ namespace Unity.FPS.Gameplay
             m_InputHandler = GetComponent<PlayerInputHandler>();
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, Dash>(m_InputHandler, this, gameObject);
 
-            CurrentFillRatio = 1f;
+            CurrentRechargeRatio = 1f;
 
             AudioSource.clip = DashSfx;
             AudioSource.loop = false;
@@ -57,26 +60,29 @@ namespace Unity.FPS.Gameplay
             // dash is used when the player presses the sprint button
             if (m_InputHandler.GetSprintInputHeld())
             {
-                m_IsDashing = true;
+                m_CanDash = true;
             }
 
             // dash usage
-            bool dashIsInUse = m_IsDashing && CurrentFillRatio > 0f;
-            if (dashIsInUse)
+            m_IsDashing = m_CanDash && CurrentRechargeRatio > 0f;
+            if (m_IsDashing)
             {
                 m_JustUsed = true;
                 // store the last time of use for refill delay
                 m_LastTimeOfUse = Time.time;
 
-                if (m_PlayerCharacterController.IsGrounded)
+                // apply new velocity
+                if (IsPlayerGrounded())
                 {
-
-                    m_PlayerCharacterController.CharacterVelocity = transform.forward * DashAcceleration;
+                    m_PlayerCharacterController.CharacterVelocity = transform.forward * DashVelocity;
                 }
-                // apply the acceleration to character's velocity
+                else
+                {
+                    m_PlayerCharacterController.CharacterVelocity += transform.forward * DashVelocity;
+                }
 
                 // consume fuel
-                CurrentFillRatio = CurrentFillRatio - (Time.deltaTime / Duration);
+                CurrentRechargeRatio = CurrentRechargeRatio - (Time.deltaTime / Duration);
 
                 for (int i = 0; i < DashVfx.Length; i++)
                 {
@@ -92,15 +98,23 @@ namespace Unity.FPS.Gameplay
                 // slow down after dash
                 if (m_JustUsed)
                 {
-                    m_PlayerCharacterController.CharacterVelocity = transform.forward * 5f;
+                    if (IsPlayerGrounded())
+                    {
+                        m_PlayerCharacterController.CharacterVelocity = transform.forward * m_PlayerCharacterController.MaxSpeedOnGround;
+                    }
+                    else
+                    {
+                        m_PlayerCharacterController.CharacterVelocity = transform.forward * m_PlayerCharacterController.MaxSpeedInAir;
+                    }
                     m_JustUsed = false;
+                    m_IsDashing = false;
                 }
 
                 // refill the meter over time
                 if (Time.time - m_LastTimeOfUse >= RechargeDelay)
                 {
-                    CurrentFillRatio = 1f;
-                    m_IsDashing = false;
+                    CurrentRechargeRatio = 1f;
+                    m_CanDash = false;
                 }
 
                 for (int i = 0; i < DashVfx.Length; i++)
@@ -110,7 +124,7 @@ namespace Unity.FPS.Gameplay
                 }
 
                 // keeps the ratio between 0 and 1
-                CurrentFillRatio = Mathf.Clamp01(CurrentFillRatio);
+                CurrentRechargeRatio = Mathf.Clamp01(CurrentRechargeRatio);
 
                 if (AudioSource.isPlaying)
                     AudioSource.Stop();

@@ -28,7 +28,7 @@ namespace Unity.FPS.UI
 
         void Update()
         {
-            if (m_Dash.m_IsDashing)
+            if (m_Dash.m_CanDash)
             {
                 DashFillImage.fillAmount = 0;
                 FillBarColorChange.UpdateVisual(0);
