@@ -399,13 +399,14 @@ MonoBehaviour:
   MaxSpeedOnGround: 5
   MovementSharpnessOnGround: 1
   MaxSpeedCrouchedRatio: 0.5
-  MaxSpeedInAir: 5
+  MaxSpeedInAir: 30
+  MaxNormalAirSpeed: 5
   AccelerationSpeedInAir: 3
   SprintSpeedModifier: 1.2
   KillHeight: -50
   RotationSpeed: 100
   AimingRotationMultiplier: 0.4
-  JumpForce: 5
+  JumpForce: 9
   CameraHeightRatio: 0.8
   CapsuleHeightStanding: 1.8
   CapsuleHeightCrouching: 0.9
@@ -739,7 +740,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7253983127304857660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
@@ -780,7 +781,7 @@ MonoBehaviour:
   AudioSource: {fileID: 0}
   DashVfx:
   - {fileID: 2837044806043129169}
-  DashAcceleration: 30
+  DashVelocity: 30
   Duration: 0.2
   RechargeDelay: 5
   DashSfx: {fileID: 0}
@@ -1399,7 +1400,7 @@ PrefabInstance:
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
@@ -1434,7 +1435,7 @@ PrefabInstance:
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
@@ -1648,7 +1649,7 @@ PrefabInstance:
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
@@ -1684,6 +1685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
+        type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
         type: 3}
