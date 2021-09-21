@@ -759,13 +759,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 0}
-  FlapVfx:
-  - {fileID: 2837044805041060570}
-  - {fileID: 8223674029651735323}
-  - {fileID: 8145349454922729230}
-  FlapDownwardVelocityCancelingFactor: 0.3
+  FloatVfx: []
+  FloatDownwardVelocityCancelingFactor: 0.3
   Duration: 2
-  FlapSfx: {fileID: 0}
+  FloatSfx: {fileID: 0}
 --- !u!114 &1130155111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,12 +1713,6 @@ PrefabInstance:
 --- !u!4 &2733244279403471202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70,
-    type: 3}
-  m_PrefabInstance: {fileID: 2729281214005691448}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &2837044805041060570 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
     type: 3}
   m_PrefabInstance: {fileID: 2729281214005691448}
   m_PrefabAsset: {fileID: 0}
