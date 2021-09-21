@@ -10,6 +10,9 @@ namespace Unity.FPS.UI
         [Tooltip("Image component for the stance sprites")]
         public Image StanceImage;
 
+        [Tooltip("Canvas group that contains the whole UI for stances")]
+        public Image MainCanvasGroup;
+
         [Tooltip("Sprite to display when standing")]
         public Sprite StandingSprite;
 
@@ -18,6 +21,8 @@ namespace Unity.FPS.UI
 
         void Start()
         {
+            MainCanvasGroup.gameObject.SetActive(false);
+
             PlayerCharacterController character = FindObjectOfType<PlayerCharacterController>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, StanceHUD>(character, this);
             character.OnStanceChanged += OnStanceChanged;
