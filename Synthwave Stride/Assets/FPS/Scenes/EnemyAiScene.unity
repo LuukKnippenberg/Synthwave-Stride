@@ -418,6 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486500630}
   - component: {fileID: 486500629}
+  - component: {fileID: 486500631}
   m_Layer: 0
   m_Name: BasicFish
   m_TagString: Untagged
@@ -459,6 +460,25 @@ Transform:
   m_Father: {fileID: 1203043145}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &486500631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486500628}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8549987, z: 2.5601711}
+  m_Center: {x: 0, y: 0.5490347, z: -0.17387812}
+--- !u!198 &516837416 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6104096765092005263, guid: 25a1b0efadb966e44889fce712c8ff8d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2729281214355838732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &567189782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1378,6 +1398,7 @@ GameObject:
   - component: {fileID: 1203043139}
   - component: {fileID: 1203043138}
   - component: {fileID: 1203043137}
+  - component: {fileID: 1203043146}
   m_Layer: 0
   m_Name: Enemy_Shark
   m_TagString: Untagged
@@ -1520,7 +1541,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1203043136}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 3
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1583,14 +1604,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   OnDetectVfx:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 516837416}
+  - {fileID: 516837416}
+  - {fileID: 516837416}
   OnDetectSfx: {fileID: 8300000, guid: 25722734eeccba042a18e26e376ca542, type: 3}
   MovementSound: {fileID: 0}
   PitchDistortionMovementSpeed:
     Min: 1
     Max: 1.5
+  isAngry: 1
 --- !u!114 &1203043144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1673,6 +1695,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1203043146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203043136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b13eee6a8b8a0e40bdcfb97d5eadcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeSpeed: 0.238
+  damage: 40
+  targetPosition: {x: 0, y: 0, z: 0}
+  player: {fileID: 2729281214152228923}
+  charging: 0
 --- !u!4 &1212145535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2141676431450117668, guid: cd17687759887a0438ee021e51abc9d9,
@@ -2077,7 +2116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DetectionSourcePoint: {fileID: 2043129683}
   DetectionRange: 20
-  AttackRange: 2
+  AttackRange: 12
   KnownTargetTimeout: 12
   Animator: {fileID: 0}
 --- !u!1 &1402848967
@@ -2922,6 +2961,7 @@ MonoBehaviour:
   PitchDistortionMovementSpeed:
     Min: 1
     Max: 1.5
+  isAngry: 0
 --- !u!33 &2690790741422947899
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4788,6 +4828,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Id: b7ef103c-6e78-41af-8322-5ac95ed05882
+--- !u!4 &2729281214152228923 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8746678193447392789, guid: 761cdc9e4e883334cbdcea062d0befa7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2729281214152228920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2729281214182533258
 PrefabInstance:
   m_ObjectHideFlags: 0

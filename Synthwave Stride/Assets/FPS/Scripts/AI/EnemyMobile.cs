@@ -11,6 +11,7 @@ namespace Unity.FPS.AI
             Patrol,
             Follow,
             Attack,
+            Dash
         }
 
         public Animator Animator;
@@ -30,6 +31,7 @@ namespace Unity.FPS.AI
 
         public AIState AiState { get; private set; }
         EnemyController m_EnemyController;
+        EnemyChargeAbility enemyDashAbility;
         AudioSource m_AudioSource;
 
         const string k_AnimMoveSpeedParameter = "MoveSpeed";
@@ -37,9 +39,12 @@ namespace Unity.FPS.AI
         const string k_AnimAlertedParameter = "Alerted";
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
+        [SerializeField] private bool isAngry;
+
         void Start()
         {
             m_EnemyController = GetComponent<EnemyController>();
+            enemyDashAbility = GetComponent<EnemyChargeAbility>();
             DebugUtility.HandleErrorIfNullGetComponent<EnemyController, EnemyMobile>(m_EnemyController, this,
                 gameObject);
 
@@ -96,6 +101,14 @@ namespace Unity.FPS.AI
                     }
 
                     break;
+                case AIState.Dash:
+                    // Transition to follow when no longer a target in attack range
+                    if (!m_EnemyController.IsTargetInAttackRange)
+                    {
+                        AiState = AIState.Follow;
+                    }
+
+                    break;
             }
         }
 
@@ -126,7 +139,25 @@ namespace Unity.FPS.AI
                     }
 
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
-                    m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                    if (enemyDashAbility != null)
+                    {
+                        if (isAngry)
+                        {
+                            AiState = AIState.Dash;
+                        }
+                    }
+                    else
+                    {
+                        m_EnemyController.TryAtack(m_EnemyController.KnownDetectedTarget.transform.position);
+                    }
+
+                    break;
+                case AIState.Dash:
+                    if (!enemyDashAbility.charging)
+                    {
+                        enemyDashAbility.StartDash();
+                    }
+                    
                     break;
             }
         }
