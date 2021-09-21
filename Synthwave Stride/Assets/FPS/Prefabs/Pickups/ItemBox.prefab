@@ -5042,7 +5042,7 @@ MonoBehaviour:
   PickupVfxPrefab: {fileID: 0}
   weaponItem:
   - {fileID: 8323776800172828795, guid: b318fabc73446b746a1005cede0c4ceb, type: 3}
-  - {fileID: 8323776800172828795, guid: 31d97e822763d1f4cb769f7e3f7f7333, type: 3}
+  - {fileID: 5232924288431730495, guid: fba85d4438c188345bcc06ccd2209c07, type: 3}
   respawner: {fileID: 2372550353692988548}
 --- !u!114 &8312325156235077290
 MonoBehaviour:

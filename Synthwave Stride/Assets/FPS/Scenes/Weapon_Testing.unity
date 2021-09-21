@@ -270,6 +270,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObjectiveKillEnemies
       objectReference: {fileID: 0}
+    - target: {fileID: 598277302063295019, guid: 012d63212fd1fe646b661cb8446c7bd4,
+        type: 3}
+      propertyPath: MustKillAllEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 598277302063295019, guid: 012d63212fd1fe646b661cb8446c7bd4,
+        type: 3}
+      propertyPath: KillsToCompleteObjective
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 598277302063295029, guid: 012d63212fd1fe646b661cb8446c7bd4,
         type: 3}
       propertyPath: m_RootOrder
@@ -806,7 +816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 761cdc9e4e883334cbdcea062d0befa7, type: 3}
---- !u!1001 &1646039476
+--- !u!1001 &1653271893
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -816,22 +826,22 @@ PrefabInstance:
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.217241
+      value: -10.494624
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8389478
+      value: 0.83894825
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.857174
+      value: -9.436796
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
@@ -872,6 +882,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312325154825045988, guid: de5c257d57d191d4e99b6c46c2bd354b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312325156235077281, guid: de5c257d57d191d4e99b6c46c2bd354b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312325156235077285, guid: de5c257d57d191d4e99b6c46c2bd354b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8312325156235077290, guid: de5c257d57d191d4e99b6c46c2bd354b,
+        type: 3}
+      propertyPath: outlineMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5c257d57d191d4e99b6c46c2bd354b, type: 3}
@@ -936,7 +966,7 @@ Transform:
   m_Father: {fileID: 577280604}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &8312325156032492899
+--- !u!1001 &2110946397
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -946,22 +976,22 @@ PrefabInstance:
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.48135
+      value: -9.30997
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5486367
+      value: 0.83894825
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.975005
+      value: 11.430084
       objectReference: {fileID: 0}
     - target: {fileID: 87032751515884621, guid: de5c257d57d191d4e99b6c46c2bd354b,
         type: 3}
@@ -1003,16 +1033,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemBox
       objectReference: {fileID: 0}
-    - target: {fileID: 8312325156235077280, guid: de5c257d57d191d4e99b6c46c2bd354b,
-        type: 3}
-      propertyPath: weaponItem.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8312325156235077280, guid: de5c257d57d191d4e99b6c46c2bd354b,
-        type: 3}
-      propertyPath: weaponItem.Array.data[2]
-      value: 
-      objectReference: {fileID: 8323776800172828795, guid: 3439b4874b7b44e4eb2216314c46b85c,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de5c257d57d191d4e99b6c46c2bd354b, type: 3}

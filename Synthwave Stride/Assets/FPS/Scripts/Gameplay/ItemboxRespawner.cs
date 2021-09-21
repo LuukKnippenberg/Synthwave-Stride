@@ -18,6 +18,7 @@ public class ItemboxRespawner : MonoBehaviour
         targetObject.SetActive(false);
         yield return new WaitForSeconds(respawnTime);
         targetObject.SetActive(true);
+
         
     }
 
