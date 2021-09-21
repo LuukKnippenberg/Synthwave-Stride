@@ -78,7 +78,7 @@ namespace Unity.FPS.Gameplay
                 }
                 else
                 {
-                    m_PlayerCharacterController.CharacterVelocity += transform.forward * DashVelocity;
+                    m_PlayerCharacterController.CharacterVelocity = transform.forward * DashVelocity;
                 }
 
                 // consume fuel
@@ -125,9 +125,6 @@ namespace Unity.FPS.Gameplay
 
                 // keeps the ratio between 0 and 1
                 CurrentRechargeRatio = Mathf.Clamp01(CurrentRechargeRatio);
-
-                if (AudioSource.isPlaying)
-                    AudioSource.Stop();
             }
         }
     }

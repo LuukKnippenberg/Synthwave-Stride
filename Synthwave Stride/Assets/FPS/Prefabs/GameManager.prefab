@@ -659,7 +659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b48a890bcc3b3134cb8c9dfe218d3649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlapFillImage: {fileID: 1137251904967208120}
+  FloatFillImage: {fileID: 1137251904967208120}
   MainCanvasGroup: {fileID: 1363120510387106246}
   FillBarColorChange: {fileID: 6222484641608395466}
 --- !u!1001 &3235725121163771830
@@ -669,25 +669,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1315839542190839937}
     m_Modifications:
-    - target: {fileID: 468844002374835557, guid: 7ff14361843237d43afc85e1cb16e295,
+    - target: {fileID: 156139300656185623, guid: 7ff14361843237d43afc85e1cb16e295,
         type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+      propertyPath: m_Name
+      value: FillImageFloat
       objectReference: {fileID: 0}
-    - target: {fileID: 468844002374835557, guid: 7ff14361843237d43afc85e1cb16e295,
+    - target: {fileID: 1781929132339238524, guid: 7ff14361843237d43afc85e1cb16e295,
         type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 468844002374835557, guid: 7ff14361843237d43afc85e1cb16e295,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 468844002374835557, guid: 7ff14361843237d43afc85e1cb16e295,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_Name
+      value: FloatCounter
       objectReference: {fileID: 0}
     - target: {fileID: 2920967930101488164, guid: 7ff14361843237d43afc85e1cb16e295,
         type: 3}
@@ -840,6 +830,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7575580860742850097, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9342ec57c4e9c2945b658eecc3331d3e,
+        type: 3}
+    - target: {fileID: 7657828471471981715, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_Name
+      value: FloatIcon
       objectReference: {fileID: 0}
     - target: {fileID: 7730855410354769530, guid: 7ff14361843237d43afc85e1cb16e295,
         type: 3}

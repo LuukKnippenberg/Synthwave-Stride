@@ -5,29 +5,29 @@ using UnityEngine.Events;
 namespace Unity.FPS.Gameplay
 {
     [RequireComponent(typeof(AudioSource))]
-    public class Flap : MonoBehaviour
+    public class Float : MonoBehaviour
     {
-        [Header("References")] [Tooltip("Audio source for flapping sfx")]
+        [Header("References")] [Tooltip("Audio source for floating sfx")]
         public AudioSource AudioSource;
 
-        [Tooltip("Particles for flapping vfx")] public ParticleSystem[] FlapVfx;
+        [Tooltip("Particles for floating vfx")] public ParticleSystem[] FloatVfx;
 
         [Range(0f, 1f)]
         [Tooltip(
-            "This will affect how much flapping will cancel the gravity value. 0 is not at all, 1 is instant")]
-        public float FlapDownwardVelocityCancelingFactor = 0.3f;
+            "This will affect how much floating will cancel the gravity value. 0 is not at all, 1 is instant")]
+        public float FloatDownwardVelocityCancelingFactor = 0.3f;
 
-        [Header("Durations")] [Tooltip("Time the player can flap")]
+        [Header("Durations")] [Tooltip("Time the player can float")]
         public float Duration = 2f;
 
-        [Header("Audio")] [Tooltip("Sound played when flapping")]
-        public AudioClip FlapSfx;
+        [Header("Audio")] [Tooltip("Sound played when floating")]
+        public AudioClip FloatSfx;
 
-        bool m_CanFlap;
+        bool m_CanFloat;
         PlayerCharacterController m_PlayerCharacterController;
         PlayerInputHandler m_InputHandler;
 
-        // stored ratio for flap duration (1 is full, 0 is empty)
+        // stored ratio for float duration (1 is full, 0 is empty)
         public float DurationRatio { get; private set; }
 
         public bool IsPlayerGrounded() => m_PlayerCharacterController.IsGrounded;
@@ -36,39 +36,39 @@ namespace Unity.FPS.Gameplay
         {
 
             m_PlayerCharacterController = GetComponent<PlayerCharacterController>();
-            DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, Flap>(m_PlayerCharacterController,
+            DebugUtility.HandleErrorIfNullGetComponent<PlayerCharacterController, Float>(m_PlayerCharacterController,
                 this, gameObject);
 
             m_InputHandler = GetComponent<PlayerInputHandler>();
-            DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, Flap>(m_InputHandler, this, gameObject);
+            DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, Float>(m_InputHandler, this, gameObject);
 
             DurationRatio = 1f;
 
-            AudioSource.clip = FlapSfx;
+            AudioSource.clip = FloatSfx;
             AudioSource.loop = true;
         }
 
         void Update()
         {
-            // flap can only be used if not grounded and jump has been pressed again once in-air
+            // float can only be used if not grounded and jump has been pressed again once in-air
             if (IsPlayerGrounded())
             {
-                m_CanFlap = false;
+                m_CanFloat = false;
             }
             else if (!m_PlayerCharacterController.HasJumpedThisFrame && m_InputHandler.GetJumpInputDown())
             {
-                m_CanFlap = true;
+                m_CanFloat = true;
             }
 
-            // flap usage
-            bool flapping = m_CanFlap && DurationRatio > 0f &&
+            // float usage
+            bool floating = m_CanFloat && DurationRatio > 0f &&
                                   m_InputHandler.GetJumpInputHeld();
-            if (flapping)
+            if (floating)
             {
 
                 // calculate how much the player is slowed down
                 float totalAcceleration = (-m_PlayerCharacterController.CharacterVelocity.y / Time.deltaTime) *
-                                      FlapDownwardVelocityCancelingFactor;
+                                      FloatDownwardVelocityCancelingFactor;
 
                 // apply the acceleration to character's velocity
                 m_PlayerCharacterController.CharacterVelocity += Vector3.up * totalAcceleration * Time.deltaTime;
@@ -76,9 +76,9 @@ namespace Unity.FPS.Gameplay
                 // consume stamina
                 DurationRatio = DurationRatio - (Time.deltaTime / Duration);
 
-                for (int i = 0; i < FlapVfx.Length; i++)
+                for (int i = 0; i < FloatVfx.Length; i++)
                 {
-                    var emissionModulesVfx = FlapVfx[i].emission;
+                    var emissionModulesVfx = FloatVfx[i].emission;
                     emissionModulesVfx.enabled = true;
                 }
 
@@ -91,11 +91,13 @@ namespace Unity.FPS.Gameplay
                 if (m_PlayerCharacterController.IsGrounded)
                 {
                     DurationRatio = Duration;
+                    if (AudioSource.isPlaying)
+                        AudioSource.Stop();
                 }
 
-                for (int i = 0; i < FlapVfx.Length; i++)
+                for (int i = 0; i < FloatVfx.Length; i++)
                 {
-                    var emissionModulesVfx = FlapVfx[i].emission;
+                    var emissionModulesVfx = FloatVfx[i].emission;
                     emissionModulesVfx.enabled = false;
                 }
 
@@ -103,7 +105,7 @@ namespace Unity.FPS.Gameplay
                 DurationRatio = Mathf.Clamp01(DurationRatio);
 
                 if (AudioSource.isPlaying)
-                    AudioSource.Stop();
+                    AudioSource.Pause();
             }
         }
     }
