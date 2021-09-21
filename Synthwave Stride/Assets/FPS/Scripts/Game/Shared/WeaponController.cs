@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -69,6 +70,7 @@ namespace Unity.FPS.Game
 
         [Tooltip("Translation to apply to weapon arm when aiming with this weapon")]
         public Vector3 AimOffset;
+
 
         [Header("Ammo Parameters")]
         [Tooltip("Should the player manually reload")]
@@ -156,6 +158,7 @@ namespace Unity.FPS.Game
         public int GetCurrentAmmo() => Mathf.FloorToInt(m_CurrentAmmo);
 
         AudioSource m_ShootAudioSource;
+
 
         public bool IsReloading { get; private set; }
 
@@ -328,7 +331,12 @@ namespace Unity.FPS.Game
                     m_ContinuousShootAudioSource.Stop();
                 }
             }
+            if (m_CurrentAmmo <=0 && !m_ShootAudioSource.isPlaying)
+            {
+                Destroy(gameObject);
+            }
         }
+
 
         public void ShowWeapon(bool show)
         {

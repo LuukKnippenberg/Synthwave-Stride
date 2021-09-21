@@ -641,7 +641,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8041970913709386453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63366fe1767301746b90c0dee905e8ec, type: 3}
+  m_Script: {fileID: 11500000, guid: c0b6eb92b6c70e84a936ae79d32b7cdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DashFillImage: {fileID: 1095234196301654773}
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8041970913709386453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2060bbe54a5475346a5736daef94122a, type: 3}
+  m_Script: {fileID: 11500000, guid: b48a890bcc3b3134cb8c9dfe218d3649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   FloatFillImage: {fileID: 1137251904967208120}
@@ -737,6 +737,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4019959137940254900, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347524353169223486, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347524353169223486, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347524353169223486, guid: 7ff14361843237d43afc85e1cb16e295,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347524353169223486, guid: 7ff14361843237d43afc85e1cb16e295,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
