@@ -121,11 +121,15 @@ namespace Unity.FPS.Gameplay
 
         void Update()
         {
-            // shoot handling
+            // shoot handling2
             WeaponController activeWeapon = GetActiveWeapon();
 
             if (activeWeapon != null && activeWeapon.IsReloading)
                 return;
+            if (activeWeapon != null && activeWeapon.GetCurrentAmmo() <= 0 )
+            {
+                RemoveWeapon(activeWeapon);
+            }
 
             if (activeWeapon != null && m_WeaponSwitchState == WeaponSwitchState.Up)
             {
@@ -213,7 +217,7 @@ namespace Unity.FPS.Gameplay
         // Iterate on all weapon slots to find the next valid weapon to switch to
         public void SwitchWeapon(bool ascendingOrder)
         {
-            int newWeaponIndex = -1;
+            int newWeaponIndex = 0;
             int closestSlotDistance = m_WeaponSlots.Length;
             for (int i = 0; i < m_WeaponSlots.Length; i++)
             {
@@ -252,6 +256,7 @@ namespace Unity.FPS.Gameplay
                     ActiveWeaponIndex = m_WeaponSwitchNewWeaponIndex;
 
                     WeaponController newWeapon = GetWeaponAtSlotIndex(m_WeaponSwitchNewWeaponIndex);
+
                     if (OnSwitchedToWeapon != null)
                     {
                         OnSwitchedToWeapon.Invoke(newWeapon);
@@ -427,11 +432,11 @@ namespace Unity.FPS.Gameplay
         // Adds a weapon to our inventory
         public bool AddWeapon(WeaponController weaponPrefab)
         {
-            // if we already hold this weapon type (a weapon coming from the same source prefab), don't add the weapon
-            if (HasWeapon(weaponPrefab) != null)
-            {
-                return false;
-            }
+            //// if we already hold this weapon type (a weapon coming from the same source prefab), don't add the weapon
+            //if (HasWeapon(weaponPrefab) != null)
+            //{
+            //    return false;
+            //}
 
             // search our weapon slots for the first free one, assign the weapon to it, and return true if we found one. Return false otherwise
             for (int i = 0; i < m_WeaponSlots.Length; i++)
@@ -447,7 +452,7 @@ namespace Unity.FPS.Gameplay
                     // Set owner to this gameObject so the weapon can alter projectile/damage logic accordingly
                     weaponInstance.Owner = gameObject;
                     weaponInstance.SourcePrefab = weaponPrefab.gameObject;
-                    weaponInstance.ShowWeapon(false);
+                    weaponInstance.ShowWeapon(true);
 
                     // Assign the first person layer to the weapon
                     int layerIndex =
