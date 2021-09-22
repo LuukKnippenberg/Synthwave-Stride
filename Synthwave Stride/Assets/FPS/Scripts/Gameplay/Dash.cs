@@ -28,15 +28,18 @@ namespace Unity.FPS.Gameplay
         [Tooltip("Sound played when using the dash")]
         public AudioClip DashSfx;
 
-        public bool m_CanDash { get; private set; }
         public bool m_IsDashing { get; private set; }
         PlayerCharacterController m_PlayerCharacterController;
         PlayerInputHandler m_InputHandler;
         float m_LastTimeOfUse;
         bool m_JustUsed;
+        bool m_CanDash;
+
+        public UnityEvent<float> OnRecharging;
 
         // stored ratio for dash resource (1 is full, 0 is empty)
-        public float CurrentRechargeRatio { get; private set; }
+        public float CurrentRechargeRatio;
+        public float CurrentDashingRatio;
 
         public bool IsPlayerGrounded() => m_PlayerCharacterController.IsGrounded;
 
@@ -50,9 +53,12 @@ namespace Unity.FPS.Gameplay
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, Dash>(m_InputHandler, this, gameObject);
 
             CurrentRechargeRatio = 1f;
+            OnRecharging.Invoke(CurrentRechargeRatio);
+            CurrentDashingRatio = 1f;
 
             AudioSource.clip = DashSfx;
             AudioSource.loop = false;
+            m_CanDash = true;
         }
 
         void Update()
@@ -60,11 +66,11 @@ namespace Unity.FPS.Gameplay
             // dash is used when the player presses the sprint button
             if (m_InputHandler.GetSprintInputHeld())
             {
-                m_CanDash = true;
+                m_CanDash = false;
             }
 
             // dash usage
-            m_IsDashing = m_CanDash && CurrentRechargeRatio > 0f;
+            m_IsDashing = !m_CanDash && CurrentDashingRatio > 0f;
             if (m_IsDashing)
             {
                 m_JustUsed = true;
@@ -72,17 +78,12 @@ namespace Unity.FPS.Gameplay
                 m_LastTimeOfUse = Time.time;
 
                 // apply new velocity
-                if (IsPlayerGrounded())
-                {
-                    m_PlayerCharacterController.CharacterVelocity = transform.forward * DashVelocity;
-                }
-                else
-                {
-                    m_PlayerCharacterController.CharacterVelocity += transform.forward * DashVelocity;
-                }
+                m_PlayerCharacterController.CharacterVelocity = transform.forward * DashVelocity;
 
                 // consume fuel
-                CurrentRechargeRatio = CurrentRechargeRatio - (Time.deltaTime / Duration);
+                CurrentDashingRatio = CurrentDashingRatio - (Time.deltaTime / Duration);
+                CurrentRechargeRatio = 0f;
+                OnRecharging.Invoke(CurrentRechargeRatio);
 
                 for (int i = 0; i < DashVfx.Length; i++)
                 {
@@ -111,23 +112,23 @@ namespace Unity.FPS.Gameplay
                 }
 
                 // refill the meter over time
-                if (Time.time - m_LastTimeOfUse >= RechargeDelay)
+                if (CurrentRechargeRatio < 1f)
                 {
-                    CurrentRechargeRatio = 1f;
-                    m_CanDash = false;
+                    CurrentRechargeRatio = CurrentRechargeRatio + (Time.deltaTime / RechargeDelay);
                 }
+                else
+                {
+                    CurrentDashingRatio = 1f;
+                    m_CanDash = true;
+                }
+                CurrentRechargeRatio = Mathf.Clamp01(CurrentRechargeRatio);
+                OnRecharging.Invoke(CurrentRechargeRatio);
 
                 for (int i = 0; i < DashVfx.Length; i++)
                 {
                     var emissionModulesVfx = DashVfx[i].emission;
                     emissionModulesVfx.enabled = false;
                 }
-
-                // keeps the ratio between 0 and 1
-                CurrentRechargeRatio = Mathf.Clamp01(CurrentRechargeRatio);
-
-                if (AudioSource.isPlaying)
-                    AudioSource.Stop();
             }
         }
     }

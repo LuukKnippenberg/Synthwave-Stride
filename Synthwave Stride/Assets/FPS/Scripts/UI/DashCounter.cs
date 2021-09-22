@@ -16,28 +16,15 @@ namespace Unity.FPS.UI
         [Tooltip("Component to animate the color when the player has a dash or not")]
         public FillBarColorChange FillBarColorChange;
 
-        Dash m_Dash;
-
         void Awake()
         {
-            m_Dash = FindObjectOfType<Dash>();
-            DebugUtility.HandleErrorIfNullFindObject<Dash, DashCounter>(m_Dash, this);
-
             FillBarColorChange.Initialize(1f, 0f);
         }
 
-        void Update()
+        public void UpdateCounter(float percentage)
         {
-            if (m_Dash.m_CanDash)
-            {
-                DashFillImage.fillAmount = 0;
-                FillBarColorChange.UpdateVisual(0);
-            }
-            else 
-            {
-                DashFillImage.fillAmount = 1;
-                FillBarColorChange.UpdateVisual(1);
-            }
+            DashFillImage.fillAmount = percentage;
+            FillBarColorChange.UpdateVisual(percentage);
         }
     }
 }

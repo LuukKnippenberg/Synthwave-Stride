@@ -126,7 +126,7 @@ namespace Unity.FPS.Gameplay
         PlayerWeaponsManager m_WeaponsManager;
         Actor m_Actor;
         Dash m_Dash;
-        Flap m_Flap;
+        Float m_Float;
         Vector3 m_GroundNormal;
         Vector3 m_CharacterVelocity;
         Vector3 m_LatestImpactSpeed;
@@ -169,8 +169,8 @@ namespace Unity.FPS.Gameplay
             m_Dash = GetComponent<Dash>();
             DebugUtility.HandleErrorIfNullGetComponent<Dash, PlayerCharacterController>(m_Dash, this, gameObject);
 
-            m_Flap = GetComponent<Flap>();
-            DebugUtility.HandleErrorIfNullGetComponent<Flap, PlayerCharacterController>(m_Flap, this, gameObject);
+            m_Float = GetComponent<Float>();
+            DebugUtility.HandleErrorIfNullGetComponent<Float, PlayerCharacterController>(m_Float, this, gameObject);
 
             m_Controller.enableOverlapRecovery = true;
 
