@@ -26,11 +26,11 @@ namespace Unity.FPS.Gameplay
         bool m_CanFloat;
         PlayerCharacterController m_PlayerCharacterController;
         PlayerInputHandler m_InputHandler;
-
-        // stored ratio for float duration (1 is full, 0 is empty)
-        public float DurationRatio { get; private set; }
+        [Range(0f, 1f)] float DurationRatio;
 
         public bool IsPlayerGrounded() => m_PlayerCharacterController.IsGrounded;
+
+        public UnityEvent<float> OnRatioChanged;
 
         void Start()
         {
@@ -43,6 +43,7 @@ namespace Unity.FPS.Gameplay
             DebugUtility.HandleErrorIfNullGetComponent<PlayerInputHandler, Float>(m_InputHandler, this, gameObject);
 
             DurationRatio = 1f;
+            OnRatioChanged.Invoke(DurationRatio);
 
             AudioSource.clip = FloatSfx;
             AudioSource.loop = true;
@@ -75,6 +76,7 @@ namespace Unity.FPS.Gameplay
 
                 // consume stamina
                 DurationRatio = DurationRatio - (Time.deltaTime / Duration);
+                OnRatioChanged.Invoke(DurationRatio);
 
                 for (int i = 0; i < FloatVfx.Length; i++)
                 {
@@ -90,19 +92,17 @@ namespace Unity.FPS.Gameplay
                 // refill the meter if the player lands
                 if (m_PlayerCharacterController.IsGrounded)
                 {
-                    DurationRatio = Duration;
+                    DurationRatio = 1f;
                     if (AudioSource.isPlaying)
                         AudioSource.Stop();
                 }
+                OnRatioChanged.Invoke(DurationRatio);
 
                 for (int i = 0; i < FloatVfx.Length; i++)
                 {
                     var emissionModulesVfx = FloatVfx[i].emission;
                     emissionModulesVfx.enabled = false;
                 }
-
-                // keeps the ratio between 0 and 1
-                DurationRatio = Mathf.Clamp01(DurationRatio);
 
                 if (AudioSource.isPlaying)
                     AudioSource.Pause();
