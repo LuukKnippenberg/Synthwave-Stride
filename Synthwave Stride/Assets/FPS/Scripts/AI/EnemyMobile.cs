@@ -40,6 +40,7 @@ namespace Unity.FPS.AI
         const string k_AnimOnDamagedParameter = "OnDamaged";
 
         [SerializeField] private bool isAngry;
+        [SerializeField] GameObject[] friends;
 
         void Start()
         {
@@ -137,10 +138,11 @@ namespace Unity.FPS.AI
                     {
                         m_EnemyController.SetNavDestination(transform.position);
                     }
-
+                    
                     m_EnemyController.OrientTowards(m_EnemyController.KnownDetectedTarget.transform.position);
                     if (enemyDashAbility != null)
                     {
+                        IfNoFriendsAliveReturnTrue();
                         if (isAngry)
                         {
                             AiState = AIState.Dash;
@@ -165,6 +167,28 @@ namespace Unity.FPS.AI
         void OnAttack()
         {
             Animator.SetTrigger(k_AnimAttackParameter);
+        }
+
+        void IfNoFriendsAliveReturnTrue()
+        {
+            int totalAlive = 0;
+
+            for (int i = 0; i < friends.Length; i++)
+            {
+                if(friends[i] != null)
+                {
+                    totalAlive++;
+                }
+            }
+
+            if(totalAlive > 0)
+            {
+                isAngry = false;
+            }
+            else
+            {
+                isAngry = true;
+            }
         }
 
         void OnDetectedTarget()
