@@ -17,8 +17,14 @@ public class ShellPickup : Pickup
         }
     }
 
-    protected override void OnPicked(PlayerCharacterController playerController)
+    protected override void OnPicked(PlayerCharacterController player)
     {
-        
+        PlayerShellCollection playershell = player.GetComponent<PlayerShellCollection>();
+        if (playershell)
+        {
+            playershell.AddShell();
+            PlayPickupFeedback();
+            Destroy(gameObject);
+        }
     }
 }
