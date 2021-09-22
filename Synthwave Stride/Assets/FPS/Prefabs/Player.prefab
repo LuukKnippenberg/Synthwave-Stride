@@ -528,8 +528,9 @@ GameObject:
   - component: {fileID: 1661717823}
   - component: {fileID: 2729281214152228922}
   - component: {fileID: 1130155111}
-  - component: {fileID: 2729281214152228934}
   - component: {fileID: 1288068290592769610}
+  - component: {fileID: 2666800844886827138}
+  - component: {fileID: 1032012455325508371}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -940,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Id: 4e313fb9-c42d-47ea-95c6-9e0317d050b3
+  m_Id: 53c284f3-8cbe-47db-9348-03d766a9a8b8
 --- !u!114 &1130155111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,38 +978,6 @@ MonoBehaviour:
         m_CallState: 2
   CurrentRechargeRatio: 0
   CurrentDashingRatio: 0
---- !u!114 &2729281214152228934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7253983127304857660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 478ed40a5364ec244a5c628d2e5144d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AudioSource: {fileID: 411249156}
-  FloatVfx: []
-  FloatDownwardVelocityCancelingFactor: 0.3
-  Duration: 2
-  FloatSfx: {fileID: 8300000, guid: 7fb73ef0f49621e4faf49afc5ea0870c, type: 3}
-  OnRatioChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Unity.FPS.UI.FloatCounter, fps.UI
-        m_MethodName: UpdateCounter
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1288068290592769610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,18 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 445753882}
-  DashVfx:
-  - {fileID: 2837044806043129169}
-  DashVelocity: 30
-  Duration: 0.2
-  RechargeDelay: 5
-  DashSfx: {fileID: 8300000, guid: cdddbd1ae64875949b16ee730091e66d, type: 3}
-  OnRecharging:
-    m_PersistentCalls:
-      m_Calls: []
-  CurrentRechargeRatio: 0
-  CurrentDashingRatio: 0
+  m_Id: 96ae7a60-36c9-4a53-a2cf-e448490583b3
 --- !u!114 &2666800844886827138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1060,6 +1018,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1032012455325508371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253983127304857660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf0f1ac7bcd8494fb2e481cb2a10390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioSource: {fileID: 411249156}
+  FloatVfx: []
+  FloatDownwardVelocityCancelingFactor: 0.3
+  Duration: 2
+  FloatSfx: {fileID: 8300000, guid: 7fb73ef0f49621e4faf49afc5ea0870c, type: 3}
+  OnRatioChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7383874627095517793
 GameObject:
   m_ObjectHideFlags: 0
