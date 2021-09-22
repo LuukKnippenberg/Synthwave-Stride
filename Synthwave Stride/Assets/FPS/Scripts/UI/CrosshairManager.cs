@@ -10,6 +10,7 @@ namespace Unity.FPS.UI
         public Image CrosshairImage;
         public Sprite NullCrosshairSprite;
         public float CrosshairUpdateshrpness = 5f;
+        public CrosshairData m_DefaultCrosshair;
 
         PlayerWeaponsManager m_WeaponsManager;
         bool m_WasPointingAtEnemy;
@@ -38,16 +39,24 @@ namespace Unity.FPS.UI
         {
             if (m_CrosshairDataDefault.CrosshairSprite == null)
                 return;
-
-            if ((force || !m_WasPointingAtEnemy) && m_WeaponsManager.IsPointingAtEnemy)
+            if (m_WeaponsManager.GetActiveWeapon() != null)
             {
-                m_CurrentCrosshair = m_CrosshairDataTarget;
-                CrosshairImage.sprite = m_CurrentCrosshair.CrosshairSprite;
-                m_CrosshairRectTransform.sizeDelta = m_CurrentCrosshair.CrosshairSize * Vector2.one;
+                if ((force || !m_WasPointingAtEnemy) && m_WeaponsManager.IsPointingAtEnemy)
+                {
+                    m_CurrentCrosshair = m_CrosshairDataTarget;
+                    CrosshairImage.sprite = m_CurrentCrosshair.CrosshairSprite;
+                    m_CrosshairRectTransform.sizeDelta = m_CurrentCrosshair.CrosshairSize * Vector2.one;
+                }
+                else
+                {
+                    m_CurrentCrosshair = m_CrosshairDataDefault;
+                    CrosshairImage.sprite = m_CurrentCrosshair.CrosshairSprite;
+                    m_CrosshairRectTransform.sizeDelta = m_CurrentCrosshair.CrosshairSize * Vector2.one;
+                }
             }
-            else if ((force || m_WasPointingAtEnemy) && !m_WeaponsManager.IsPointingAtEnemy)
+            else
             {
-                m_CurrentCrosshair = m_CrosshairDataDefault;
+                m_CurrentCrosshair = m_DefaultCrosshair;
                 CrosshairImage.sprite = m_CurrentCrosshair.CrosshairSprite;
                 m_CrosshairRectTransform.sizeDelta = m_CurrentCrosshair.CrosshairSize * Vector2.one;
             }

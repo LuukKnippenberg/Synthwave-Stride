@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 106790115311484954}
   - component: {fileID: 5542020336735652036}
   - component: {fileID: 1203337828444365110}
-  - component: {fileID: 2223418409092269418}
-  - component: {fileID: 6841512634174719543}
   m_Layer: 0
   m_Name: Projectile_Disc
   m_TagString: Untagged
@@ -110,8 +108,8 @@ MonoBehaviour:
   HittableLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  Speed: 30
-  GravityDownAcceleration: 10
+  Speed: 50
+  GravityDownAcceleration: 0
   TrajectoryCorrectionDistance: -1
   InheritWeaponVelocity: 0
   Damage: 40
@@ -129,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0244d6b9e98532469c7be0732490a61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AreaOfEffectDistance: 2.5
+  AreaOfEffectDistance: 6
   DamageRatioOverDistance:
     serializedVersion: 2
     m_Curve:
@@ -155,52 +153,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AreaOfEffectColor: {r: 0.23584908, g: 0.09233714, b: 0.09233714, a: 0.5}
---- !u!114 &2223418409092269418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3614fdf64d310f44ba678e99290fa20a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage:
-    Min: 80
-    Max: 350
-  Radius:
-    Min: 0.2
-    Max: 0.2
-  Speed:
-    Min: 20
-    Max: 40
-  GravityDownAcceleration:
-    Min: 10
-    Max: 3
-  AreaOfEffectDistance:
-    Min: 5
-    Max: 5
---- !u!114 &6841512634174719543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106790115311484953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da2b0de22b1558e4caa11aa3696e87fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ChargingObject: {fileID: 106790115311484953}
-  Scale:
-    Min: {x: 0.5, y: 0.5, z: 0.5}
-    Max: {x: 0.8, y: 0.8, z: 0.8}
-  Color:
-    Min: {r: 0, g: 2, b: 0.08890152, a: 1}
-    Max: {r: 0, g: 1.9999998, b: 0.32460728, a: 1}
 --- !u!1 &1945832826066038730
 GameObject:
   m_ObjectHideFlags: 0
