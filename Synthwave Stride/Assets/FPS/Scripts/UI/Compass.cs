@@ -24,6 +24,7 @@ namespace Unity.FPS.UI
 
         void Awake()
         {
+            gameObject.SetActive(false);
             PlayerCharacterController playerCharacterController = FindObjectOfType<PlayerCharacterController>();
             DebugUtility.HandleErrorIfNullFindObject<PlayerCharacterController, Compass>(playerCharacterController,
                 this);
