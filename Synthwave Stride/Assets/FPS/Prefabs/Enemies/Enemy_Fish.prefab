@@ -188,8 +188,6 @@ MonoBehaviour:
   - {fileID: 0}
   OnDetectVfx:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   OnDetectSfx: {fileID: 8300000, guid: 25722734eeccba042a18e26e376ca542, type: 3}
   MovementSound: {fileID: 0}
   PitchDistortionMovementSpeed:
