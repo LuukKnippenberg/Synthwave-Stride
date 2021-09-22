@@ -10,6 +10,9 @@ namespace Unity.FPS.UI
         [Tooltip("Image component dispplaying current health")]
         public Image HealthFillImage;
 
+        [Tooltip("Canvas group that contains the whole UI for player health")]
+        public CanvasGroup MainCanvasGroup;
+
         Health m_PlayerHealth;
 
         void Start()
@@ -26,6 +29,8 @@ namespace Unity.FPS.UI
 
         void Update()
         {
+            MainCanvasGroup.gameObject.SetActive(false);
+
             // update health bar value
             HealthFillImage.fillAmount = m_PlayerHealth.CurrentHealth / m_PlayerHealth.MaxHealth;
         }

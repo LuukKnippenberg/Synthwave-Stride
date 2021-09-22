@@ -14,7 +14,7 @@ namespace Unity.FPS.Gameplay
         public AudioSource AudioSource;
 
         [Header("General")] [Tooltip("Force applied downward when in the air")]
-        public float GravityDownForce = 20f;
+        public float GravityDownForce = 8f;
 
         [Tooltip("Physic layers checked to consider the player grounded")]
         public LayerMask GroundCheckLayers = -1;
@@ -23,29 +23,32 @@ namespace Unity.FPS.Gameplay
         public float GroundCheckDistance = 0.05f;
 
         [Header("Movement")] [Tooltip("Max movement speed when grounded (when not sprinting)")]
-        public float MaxSpeedOnGround = 10f;
+        public float MaxSpeedOnGround = 5f;
 
         [Tooltip(
             "Sharpness for the movement when grounded, a low value will make the player accelerate and decelerate slowly, a high value will do the opposite")]
-        public float MovementSharpnessOnGround = 15;
+        public float MovementSharpnessOnGround = 1;
 
         [Tooltip("Max movement speed when crouching")] [Range(0, 1)]
         public float MaxSpeedCrouchedRatio = 0.5f;
 
         [Tooltip("Max movement speed when not grounded")]
-        public float MaxSpeedInAir = 10f;
+        public float MaxSpeedInAir = 30f;
+
+        [Tooltip("Max movement speed when not grounded and not dashing")]
+        public float MaxNormalAirSpeed = 5f;
 
         [Tooltip("Acceleration speed when in the air")]
-        public float AccelerationSpeedInAir = 25f;
+        public float AccelerationSpeedInAir = 3f;
 
         [Tooltip("Multiplicator for the sprint speed (based on grounded speed)")]
-        public float SprintSpeedModifier = 2f;
+        public float SprintSpeedModifier = 1f;
 
         [Tooltip("Height at which the player dies instantly when falling off the map")]
         public float KillHeight = -50f;
 
         [Header("Rotation")] [Tooltip("Rotation speed for moving the camera")]
-        public float RotationSpeed = 200f;
+        public float RotationSpeed = 100f;
 
         [Range(0.1f, 1f)] [Tooltip("Rotation speed multiplier when aiming")]
         public float AimingRotationMultiplier = 0.4f;
@@ -54,7 +57,7 @@ namespace Unity.FPS.Gameplay
         public float JumpForce = 9f;
 
         [Header("Stance")] [Tooltip("Ratio (0-1) of the character height where the camera will be at")]
-        public float CameraHeightRatio = 0.9f;
+        public float CameraHeightRatio = 0.8f;
 
         [Tooltip("Height of character when standing")]
         public float CapsuleHeightStanding = 1.8f;
@@ -122,6 +125,8 @@ namespace Unity.FPS.Gameplay
         CharacterController m_Controller;
         PlayerWeaponsManager m_WeaponsManager;
         Actor m_Actor;
+        Dash m_Dash;
+        Float m_Float;
         Vector3 m_GroundNormal;
         Vector3 m_CharacterVelocity;
         Vector3 m_LatestImpactSpeed;
@@ -160,6 +165,12 @@ namespace Unity.FPS.Gameplay
 
             m_Actor = GetComponent<Actor>();
             DebugUtility.HandleErrorIfNullGetComponent<Actor, PlayerCharacterController>(m_Actor, this, gameObject);
+
+            m_Dash = GetComponent<Dash>();
+            DebugUtility.HandleErrorIfNullGetComponent<Dash, PlayerCharacterController>(m_Dash, this, gameObject);
+
+            m_Float = GetComponent<Float>();
+            DebugUtility.HandleErrorIfNullGetComponent<Float, PlayerCharacterController>(m_Float, this, gameObject);
 
             m_Controller.enableOverlapRecovery = true;
 
@@ -360,7 +371,15 @@ namespace Unity.FPS.Gameplay
                     // limit air speed to a maximum, but only horizontally
                     float verticalVelocity = CharacterVelocity.y;
                     Vector3 horizontalVelocity = Vector3.ProjectOnPlane(CharacterVelocity, Vector3.up);
-                    horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, MaxSpeedInAir * speedModifier);
+                    if (m_Dash.m_IsDashing)
+                    {
+                        horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, MaxSpeedInAir * speedModifier);
+                    }
+                    else 
+                    { 
+                        horizontalVelocity = Vector3.ClampMagnitude(horizontalVelocity, MaxNormalAirSpeed * speedModifier);
+                    }
+
                     CharacterVelocity = horizontalVelocity + (Vector3.up * verticalVelocity);
 
                     // apply the gravity to the velocity
