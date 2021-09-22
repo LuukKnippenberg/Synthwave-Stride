@@ -529,6 +529,7 @@ GameObject:
   - component: {fileID: 2729281214152228922}
   - component: {fileID: 2729281214152228934}
   - component: {fileID: 1130155111}
+  - component: {fileID: 2666800844886827138}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -939,7 +940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Id: b7ef103c-6e78-41af-8322-5ac95ed05882
+  m_Id: ad0653f3-a9af-49b5-97d0-4515da58787c
 --- !u!114 &2729281214152228934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,15 +950,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7253983127304857660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbf0f1ac7bcd8494fb2e481cb2a10390, type: 3}
+  m_Script: {fileID: 11500000, guid: 478ed40a5364ec244a5c628d2e5144d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 411249156}
-  FloatVfx:
-  - {fileID: 2837044805041060570}
+  FloatVfx: []
   FloatDownwardVelocityCancelingFactor: 0.3
   Duration: 2
-  FloatSfx: {fileID: 8300000, guid: 7fb73ef0f49621e4faf49afc5ea0870c, type: 3}
+  FloatSfx: {fileID: 0}
+  OnRatioChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1130155111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +980,38 @@ MonoBehaviour:
   Duration: 0.2
   RechargeDelay: 5
   DashSfx: {fileID: 8300000, guid: cdddbd1ae64875949b16ee730091e66d, type: 3}
+  OnRecharging:
+    m_PersistentCalls:
+      m_Calls: []
+  CurrentRechargeRatio: 0
+  CurrentDashingRatio: 0
+--- !u!114 &2666800844886827138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253983127304857660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c50c20563cce71468445112bc009b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnCollectingShell:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7383874627095517793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,12 +1955,6 @@ GameObject:
 --- !u!4 &2733244279403471202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70,
-    type: 3}
-  m_PrefabInstance: {fileID: 2729281214005691448}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &2837044805041060570 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
     type: 3}
   m_PrefabInstance: {fileID: 2729281214005691448}
   m_PrefabAsset: {fileID: 0}
