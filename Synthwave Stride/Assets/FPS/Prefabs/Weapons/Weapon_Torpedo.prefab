@@ -491,13 +491,13 @@ MonoBehaviour:
   WeaponName: Torpedo Launcher
   WeaponIcon: {fileID: 21300000, guid: cab1398a10b307b44b0ffeb0eef23254, type: 3}
   CrosshairDataDefault:
-    CrosshairSprite: {fileID: 21300000, guid: 14aa1febcf423c84997aa10d7ff64d17, type: 3}
-    CrosshairSize: 100
-    CrosshairColor: {r: 0, g: 1, b: 0.49271274, a: 0.3764706}
+    CrosshairSprite: {fileID: 21300000, guid: e881aa18189b12f4e915fc5b14ddc421, type: 3}
+    CrosshairSize: 50
+    CrosshairColor: {r: 1, g: 0.47482994, b: 0, a: 1}
   CrosshairDataTargetInSight:
-    CrosshairSprite: {fileID: 21300000, guid: 14aa1febcf423c84997aa10d7ff64d17, type: 3}
-    CrosshairSize: 100
-    CrosshairColor: {r: 0, g: 1, b: 0.4226508, a: 1}
+    CrosshairSprite: {fileID: 21300000, guid: e881aa18189b12f4e915fc5b14ddc421, type: 3}
+    CrosshairSize: 40
+    CrosshairColor: {r: 1, g: 0.046051282, b: 0, a: 1}
   WeaponRoot: {fileID: 8450969054784630904}
   WeaponMuzzle: {fileID: 2104525589082988271}
   ShootType: 0
