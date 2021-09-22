@@ -16,20 +16,16 @@ namespace Unity.FPS.UI
         [Tooltip("Component to animate the color when floating")]
         public FillBarColorChange FillBarColorChange;
 
-        Float m_Float;
 
         void Awake()
         {
-            m_Float = FindObjectOfType<Float>();
-            DebugUtility.HandleErrorIfNullFindObject<Float, FloatCounter>(m_Float, this);
-
             FillBarColorChange.Initialize(1f, 0f);
         }
 
-        void Update()
+        public void UpdateCounter(float percentage)
         {
-            FloatFillImage.fillAmount = m_Float.DurationRatio;
-            FillBarColorChange.UpdateVisual(m_Float.DurationRatio);
+            FloatFillImage.fillAmount = percentage;
+            FillBarColorChange.UpdateVisual(percentage);
         }
     }
 }
