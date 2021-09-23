@@ -70,8 +70,9 @@ namespace Unity.FPS.Gameplay
 
         public float GetLookInputsVertical()
         {
+            float i = InvertYAxis ? -1 : 1;
             return GetMouseOrStickLookAxis(GameConstants.k_MouseAxisNameVertical,
-                GameConstants.k_AxisNameJoystickLookVertical);
+                GameConstants.k_AxisNameJoystickLookVertical) * i;
         }
 
         public bool GetJumpInputDown()
@@ -236,10 +237,6 @@ namespace Unity.FPS.Gameplay
                 bool isGamepad = Input.GetAxis(stickInputName) != 0f;
                 float i = isGamepad ? Input.GetAxis(stickInputName) : Input.GetAxisRaw(mouseInputName);
 
-                // handle inverting vertical input
-                if (InvertYAxis)
-                    i *= -1f;
-
                 // apply sensitivity multiplier
                 i *= LookSensitivity;
 
@@ -262,6 +259,11 @@ namespace Unity.FPS.Gameplay
             }
 
             return 0f;
+        }
+
+        public void InvertY()
+        {
+            InvertYAxis = !InvertYAxis;
         }
     }
 }
