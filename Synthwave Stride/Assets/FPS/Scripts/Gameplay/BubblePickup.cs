@@ -8,6 +8,7 @@ namespace Unity.FPS.Gameplay
     {
         [Header("Parameters")] [Tooltip("Amount of time to add on pickup")]
         public float TimeAmount;
+        public Respawner respawner;
 
         public UnityEvent<float> OnTimePickup;
 
@@ -15,7 +16,7 @@ namespace Unity.FPS.Gameplay
         {
             OnTimePickup.Invoke(TimeAmount);
             PlayPickupFeedback();
-            Destroy(gameObject);
+            respawner.respawnItem();
         }
     }
 }

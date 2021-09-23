@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2620131183356007197}
   - component: {fileID: 6275561476046798665}
   - component: {fileID: 6596897647165760670}
+  - component: {fileID: 2646514389541932934}
   m_Layer: 0
   m_Name: Pickup_Bubble
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   PickupSfx: {fileID: 0}
   PickupVfxPrefab: {fileID: 0}
   TimeAmount: 10
+  respawner: {fileID: 2646514389541932934}
   OnTimePickup:
     m_PersistentCalls:
       m_Calls:
@@ -113,6 +115,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2646514389541932934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620131183356007192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481b13da746bf974a8b9c9b39d6470b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 2620131183356007192}
+  respawnTime: 3
 --- !u!1 &7220127101517255154
 GameObject:
   m_ObjectHideFlags: 0
