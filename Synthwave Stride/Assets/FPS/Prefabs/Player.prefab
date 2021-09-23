@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Id: 53c284f3-8cbe-47db-9348-03d766a9a8b8
+  m_Id: 90dd966d-6aa5-4bdb-bd00-06f6cdee3cf0
 --- !u!114 &1130155111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +959,7 @@ MonoBehaviour:
   - {fileID: 2837044806043129169}
   DashVelocity: 30
   Duration: 0.2
-  RechargeDelay: 5
+  RechargeDelay: 2
   DashSfx: {fileID: 8300000, guid: cdddbd1ae64875949b16ee730091e66d, type: 3}
   OnRecharging:
     m_PersistentCalls:
@@ -990,7 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8534e17a0f90604c9afd4f5c73d829f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Id: 96ae7a60-36c9-4a53-a2cf-e448490583b3
+  m_Id: ff89f951-b59e-4595-b6b6-82a7ae0cfbd3
 --- !u!114 &2666800844886827138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,12 +1007,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+        m_TargetAssemblyTypeName: ShellCollectingBar, fps.UI
+        m_MethodName: UpdateView
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1031,13 +1031,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 411249156}
-  FloatVfx: []
+  FloatVfx:
+  - {fileID: 2837044805041060570}
   FloatDownwardVelocityCancelingFactor: 0.3
   Duration: 2
   FloatSfx: {fileID: 8300000, guid: 7fb73ef0f49621e4faf49afc5ea0870c, type: 3}
   OnRatioChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Unity.FPS.UI.FloatCounter, fps.UI
+        m_MethodName: UpdateCounter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7383874627095517793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1994,12 @@ GameObject:
 --- !u!4 &2733244279403471202 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010731693402, guid: 0d1adb20421ed664b800c8cf3d103e70,
+    type: 3}
+  m_PrefabInstance: {fileID: 2729281214005691448}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2837044805041060570 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000010118446818, guid: 0d1adb20421ed664b800c8cf3d103e70,
     type: 3}
   m_PrefabInstance: {fileID: 2729281214005691448}
   m_PrefabAsset: {fileID: 0}
