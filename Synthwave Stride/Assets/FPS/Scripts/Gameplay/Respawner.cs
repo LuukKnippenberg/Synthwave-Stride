@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemboxRespawner : MonoBehaviour
+public class Respawner : MonoBehaviour
 {
     [Tooltip("The GameObject to set active.")]
     public GameObject targetObject;
