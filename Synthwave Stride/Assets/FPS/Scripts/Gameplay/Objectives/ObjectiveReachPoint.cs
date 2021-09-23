@@ -1,5 +1,6 @@
 ﻿using Unity.FPS.Game;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Unity.FPS.Gameplay
 {
@@ -8,6 +9,8 @@ namespace Unity.FPS.Gameplay
     {
         [Tooltip("Visible transform that will be destroyed once the objective is completed")]
         public Transform DestroyRoot;
+
+        public UnityEvent onWin;
 
         void Awake()
         {
@@ -25,6 +28,8 @@ namespace Unity.FPS.Gameplay
             if (player != null)
             {
                 CompleteObjective(string.Empty, string.Empty, "Objective complete : " + Title);
+
+                onWin.Invoke();
 
                 // destroy the transform, will remove the compass marker if it has one
                 Destroy(DestroyRoot.gameObject);

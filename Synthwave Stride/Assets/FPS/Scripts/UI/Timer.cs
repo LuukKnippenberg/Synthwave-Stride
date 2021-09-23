@@ -21,6 +21,7 @@ namespace Unity.FPS.UI
         float m_TimeLeftRatio;
 
         public UnityEvent OnTimerRanOut;
+        bool stopTimer = false;
 
         void Awake()
         {
@@ -31,23 +32,32 @@ namespace Unity.FPS.UI
 
         void Update()
         {
-            m_TimeLeft -= (Time.deltaTime / TotalTime);
-            m_TimeLeftRatio = m_TimeLeft / TotalTime;
-            m_TimeLeftRatio = Mathf.Clamp01(m_TimeLeftRatio);
-
-            TimerFillImage.fillAmount = m_TimeLeftRatio;
-            FillBarColorChange.UpdateVisual(m_TimeLeftRatio);
-
-            if (m_TimeLeft <= 0)
+            if (!stopTimer)
             {
-                OnTimerRanOut.Invoke();
+                m_TimeLeft -= (Time.deltaTime / TotalTime);
+                m_TimeLeftRatio = m_TimeLeft / TotalTime;
+                m_TimeLeftRatio = Mathf.Clamp01(m_TimeLeftRatio);
+
+                TimerFillImage.fillAmount = m_TimeLeftRatio;
+                FillBarColorChange.UpdateVisual(m_TimeLeftRatio);
+
+                if (m_TimeLeft <= 0)
+                {
+                    OnTimerRanOut.Invoke();
+                }
             }
+            
         }
 
         public void AddTime(float time)
         {
             m_TimeLeft += time;
             m_TimeLeft = Mathf.Clamp(m_TimeLeft, 0f, TotalTime);
+        }
+
+        public void StopTimer()
+        {
+            stopTimer = true;
         }
     }
 }
