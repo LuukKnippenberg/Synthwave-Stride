@@ -53,12 +53,14 @@ namespace Unity.FPS.Game
 
             // call OnDamage action
             float trueDamageAmount = healthBefore - CurrentHealth;
+
+            HandleDeath();
             if (trueDamageAmount > 0f)
             {
                 OnDamaged?.Invoke(trueDamageAmount, damageSource);
             }
 
-            HandleDeath();
+            
         }
 
         public void Kill()

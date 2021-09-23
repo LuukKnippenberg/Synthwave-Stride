@@ -47,6 +47,7 @@ namespace Unity.FPS.UI
         public void AddTime(float time)
         {
             m_TimeLeft += time;
+            m_TimeLeft = Mathf.Clamp(m_TimeLeft, 0f, TotalTime);
         }
     }
 }
